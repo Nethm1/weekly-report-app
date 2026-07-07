@@ -2,18 +2,20 @@ import { format, startOfWeek, endOfWeek, addWeeks } from 'date-fns'
 
 export const formatDate = (date) => {
   if (!date) return ''
-  return format(new Date(date), 'MMM dd, yyyy')
+  try { return format(new Date(date), 'MMM dd, yyyy') } catch { return '' }
 }
 
 export const formatWeekRange = (start, end) => {
   if (!start || !end) return ''
-  return `${format(new Date(start), 'MMM dd')} - ${format(new Date(end), 'MMM dd, yyyy')}`
+  try {
+    return `${format(new Date(start), 'MMM dd')} – ${format(new Date(end), 'MMM dd, yyyy')}`
+  } catch { return '' }
 }
 
 export const getCurrentWeek = () => {
   const now = new Date()
-  const start = startOfWeek(now, { weekStartsOn: 1 }) // Monday
-  const end = endOfWeek(now, { weekStartsOn: 1 })     // Sunday
+  const start = startOfWeek(now, { weekStartsOn: 1 })
+  const end = endOfWeek(now, { weekStartsOn: 1 })
   return { weekStart: start, weekEnd: end }
 }
 
@@ -36,7 +38,7 @@ export const getStatusBadgeClass = (status) => {
   switch (status) {
     case 'submitted': return 'badge-submitted'
     case 'draft': return 'badge-draft'
-    case 'pending': return 'badge-pending'
+    case 'late': return 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-700'
     default: return 'badge-pending'
   }
 }
