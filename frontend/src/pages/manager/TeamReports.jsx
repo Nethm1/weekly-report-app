@@ -60,6 +60,7 @@ export default function TeamReports() {
             <option value="">All Status</option>
             <option value="submitted">Submitted</option>
             <option value="draft">Draft</option>
+            <option value="late">Late</option>
           </select>
           <input type="date" name="startDate" value={filters.startDate} onChange={handleFilter} className="input-field text-sm" />
           <input type="date" name="endDate" value={filters.endDate} onChange={handleFilter} className="input-field text-sm" />

@@ -6,13 +6,16 @@ import ChatWidget from '../ai/ChatWidget'
 export default function Layout({ children }) {
   const { user } = useAuth()
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen" style={{ backgroundColor: '#EEE9FF' }}>
       <Sidebar />
-      <main className="flex-1 ml-64 p-8 overflow-y-auto min-h-screen">
+      <main className="flex-1 ml-60 p-7 overflow-y-auto min-h-screen">
         {children}
       </main>
       {user?.role === 'manager' && <ChatWidget />}
-      <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
+      <Toaster position="top-right" toastOptions={{
+        duration: 3000,
+        style: { borderRadius: '12px', fontSize: '14px' }
+      }} />
     </div>
   )
 }

@@ -43,11 +43,24 @@ exports.updateUserRole = async (req, res) => {
 // @access  Private
 exports.updateProfile = async (req, res) => {
   try {
-    const { name, department } = req.body;
-    const user = await User.findByIdAndUpdate(
-      req.user._id,
-      { name, department },
-      { new: true, runValidators: true }
+    const { name, department, password } = req.body;
+    const updateData = {};
+    if (name) updateData.name = name;
+    if (department !== undefined) updateData.department = department;
+
+    // If password provided, let mongoose pre-save hook hash it
+    if (password) {
+      const User = require('../models/User');
+      const user = await User.findById(req.user._id);
+      user.name = name || user.name;
+      user.department = department !== undefined ? department : user.department;
+      user.password = password;
+      await user.save();
+      return res.json({ success: true, data: { id: user._id, name: user.name, email: user.email, role: user.role } });
+    }
+
+    const user = await require('../models/User').findByIdAndUpdate(
+      req.user._id, updateData, { new: true, runValidators: true }
     ).select('-password');
 
     res.json({ success: true, data: user });

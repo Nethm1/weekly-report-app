@@ -108,7 +108,7 @@ exports.getSubmissionStatus = async (req, res) => {
   }
 };
 
-// @desc    Get trends (last 8 weeks)
+// @desc    Get trends (last 8 weeks) - team-wide + per person
 // @route   GET /api/dashboard/trends
 // @access  Private (manager)
 exports.getTrends = async (req, res) => {
@@ -119,18 +119,40 @@ exports.getTrends = async (req, res) => {
     const reports = await Report.find({
       status: 'submitted',
       weekStart: { $gte: eightWeeksAgo },
-    }).select('weekStart hoursWorked');
+    }).populate('user', 'name').select('weekStart hoursWorked user tasksCompleted');
 
+    // Team-wide weekly data
     const weeklyData = {};
+    // Per-person data
+    const perPersonData = {};
+
     reports.forEach(r => {
       const week = r.weekStart.toISOString().split('T')[0];
+      const userName = r.user?.name || 'Unknown';
+
+      // Team wide
       if (!weeklyData[week]) weeklyData[week] = { week, count: 0, hours: 0 };
       weeklyData[week].count += 1;
       weeklyData[week].hours += r.hoursWorked || 0;
+
+      // Per person
+      if (!perPersonData[userName]) perPersonData[userName] = {};
+      if (!perPersonData[userName][week]) perPersonData[userName][week] = 0;
+      perPersonData[userName][week] += 1;
     });
 
     const trends = Object.values(weeklyData).sort((a, b) => new Date(a.week) - new Date(b.week));
-    res.json({ success: true, data: trends });
+
+    // Build per-person chart data (array of weeks with each person's count)
+    const allWeeks = [...new Set(reports.map(r => r.weekStart.toISOString().split('T')[0]))].sort();
+    const people = Object.keys(perPersonData);
+    const perPersonTrends = allWeeks.map(week => {
+      const entry = { week };
+      people.forEach(p => { entry[p] = perPersonData[p][week] || 0; });
+      return entry;
+    });
+
+    res.json({ success: true, data: trends, perPerson: perPersonTrends, people });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
