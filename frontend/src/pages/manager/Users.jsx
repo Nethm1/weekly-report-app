@@ -32,11 +32,11 @@ export default function UsersPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Team Members</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Team Members</h1>
         <p className="text-gray-400 text-sm mt-1">Manage team members and their roles</p>
       </div>
 
-      <div className="card">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
         <div className="flex items-center gap-2 mb-4">
           <Users size={18} className="text-violet-600" />
           <span className="font-semibold text-gray-900">{users.length} Users</span>
@@ -47,13 +47,13 @@ export default function UsersPage() {
         ) : (
           <div className="space-y-3">
             {users.map(u => (
-              <div key={u._id} className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+              <div key={u._id} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-violet-100 text-violet-700 flex items-center justify-center font-bold text-sm">
                     {u.name?.charAt(0).toUpperCase()}
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900">{u.name}</p>
+                    <p className="font-medium text-gray-900 dark:text-white">{u.name}</p>
                     <p className="text-xs text-gray-400">{u.email}</p>
                     {u.department && <p className="text-xs text-gray-400">{u.department}</p>}
                   </div>
@@ -69,7 +69,7 @@ export default function UsersPage() {
                     value={u.role}
                     onChange={e => handleRoleChange(u._id, e.target.value)}
                     disabled={updating === u._id}
-                    className="text-xs border border-gray-200 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white"
+                    className="text-xs border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white dark:bg-gray-700 dark:text-gray-200"
                   >
                     <option value="member">Member</option>
                     <option value="manager">Manager</option>

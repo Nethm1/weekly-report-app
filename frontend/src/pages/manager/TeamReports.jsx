@@ -37,7 +37,7 @@ export default function TeamReports() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Team Reports</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Team Reports</h1>
         <p className="text-gray-400 text-sm mt-1">View and filter all team member reports</p>
       </div>
 
@@ -85,7 +85,7 @@ export default function TeamReports() {
         <div className="space-y-3">
           <p className="text-sm text-gray-400">{reports.length} report{reports.length !== 1 ? 's' : ''} found</p>
           {reports.map((report) => (
-            <div key={report._id} className="card hover:shadow-md transition-all duration-200 cursor-pointer"
+            <div key={report._id} className="card hover:shadow-md transition-all duration-200 cursor-pointer bg-white dark:bg-gray-800"
               onClick={() => setExpanded(expanded === report._id ? null : report._id)}>
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
@@ -104,7 +104,7 @@ export default function TeamReports() {
                     <div className="w-6 h-6 rounded-lg bg-violet-100 text-violet-700 flex items-center justify-center text-xs font-bold flex-shrink-0">
                       {report.user?.name?.charAt(0)}
                     </div>
-                    <span className="font-semibold text-gray-900 text-sm">{report.user?.name}</span>
+                    <span className="font-semibold text-gray-900 dark:text-white text-sm">{report.user?.name}</span>
                     <span className="text-gray-400 text-sm">·</span>
                     <span className="text-sm text-gray-500">{formatWeekRange(report.weekStart, report.weekEnd)}</span>
                   </div>
@@ -136,7 +136,7 @@ function Detail({ label, value }) {
   return (
     <div>
       <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">{label}</p>
-      <p className="text-sm text-gray-700 whitespace-pre-line">{value}</p>
+      <p className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-line">{value}</p>
     </div>
   )
 }

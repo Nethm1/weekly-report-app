@@ -96,7 +96,7 @@ export default function Dashboard() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
           <p className="text-gray-400 text-sm mt-0.5">Team weekly report analytics & overview</p>
         </div>
         <button onClick={loadData} className="btn-secondary text-sm">
@@ -107,22 +107,21 @@ export default function Dashboard() {
       {/* Summary Metric Cards */}
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
         {statCards.map((s, i) => (
-          <div key={i} className="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-all">
+          <div key={i} className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all">
             <div className="flex items-center justify-between mb-3">
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{s.title}</p>
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: s.gradient }}>
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: s.gradient }}>
                 {s.icon}
               </div>
             </div>
-            <p className="text-3xl font-bold text-gray-900">{s.value}</p>
+            <p className="text-3xl font-bold text-gray-900 dark:text-white">{s.value}</p>
             {s.subtitle && <p className="text-xs text-gray-400 mt-1">{s.subtitle}</p>}
           </div>
         ))}
       </div>
 
       {/* ── VISUAL INSIGHT 1: Tasks Completed Trend ── */}
-      <div className="bg-white rounded-2xl p-5 shadow-sm">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <div>
             <h2 className="font-bold text-gray-900">Tasks Completed Trend</h2>
@@ -189,8 +188,8 @@ export default function Dashboard() {
       {/* ── VISUAL INSIGHT 2 & 3: Submission Status + Workload ── */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         {/* Pie - This Week Status */}
-        <div className="bg-white rounded-2xl p-5 shadow-sm">
-          <h2 className="font-bold text-gray-900 mb-1">Submission Status</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm">
+          <h2 className="font-bold text-gray-900 dark:text-white mb-1">Submission Status</h2>
           <p className="text-xs text-gray-400 mb-4">This week breakdown</p>
           {pieData.length > 0 ? (
             <ResponsiveContainer width="100%" height={200}>
@@ -209,8 +208,8 @@ export default function Dashboard() {
         </div>
 
         {/* Bar - Workload by Project */}
-        <div className="bg-white rounded-2xl p-5 shadow-sm lg:col-span-2">
-          <h2 className="font-bold text-gray-900 mb-1">Workload / Task Distribution by Project</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm lg:col-span-2">
+          <h2 className="font-bold text-gray-900 dark:text-white mb-1">Workload / Task Distribution by Project</h2>
           <p className="text-xs text-gray-400 mb-4">Reports submitted per project (last 8 weeks)</p>
           {workload.length > 0 ? (
             <ResponsiveContainer width="100%" height={200}>
@@ -232,23 +231,22 @@ export default function Dashboard() {
       </div>
 
       {/* ── VISUAL INSIGHT 4: Submission Status by Team Member ── */}
-      <div className="bg-white rounded-2xl p-5 shadow-sm">
-        <h2 className="font-bold text-gray-900 mb-1">Report Submission Status by Team Member</h2>
+      <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm">
+        <h2 className="font-bold text-gray-900 dark:text-white mb-1">Report Submission Status by Team Member</h2>
         <p className="text-xs text-gray-400 mb-4">Current week submission tracking</p>
         {submissionStatus.length === 0 ? (
           <p className="text-center text-gray-300 py-8 text-sm">No team members found</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {submissionStatus.map(m => (
-              <div key={m.id} className="flex items-center justify-between p-3 rounded-xl"
-                style={{ backgroundColor: '#F8F5FF' }}>
+              <div key={m.id} className="flex items-center justify-between p-3 rounded-xl bg-violet-50 dark:bg-gray-700/60">
                 <div className="flex items-center gap-2.5">
                   <div className="w-9 h-9 rounded-xl flex items-center justify-center text-xs font-bold text-white flex-shrink-0"
                     style={{ background: 'linear-gradient(135deg, #7c3aed, #5b21b6)' }}>
                     {m.name?.charAt(0)}
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-gray-900">{m.name}</p>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white">{m.name}</p>
                     <p className="text-xs text-gray-400">{m.department || '—'}</p>
                   </div>
                 </div>
@@ -260,28 +258,27 @@ export default function Dashboard() {
       </div>
 
       {/* ── VISUAL INSIGHT 5: Recent Activity Feed ── */}
-      <div className="bg-white rounded-2xl p-5 shadow-sm">
-        <h2 className="font-bold text-gray-900 mb-1">Recent Reports / Activity Feed</h2>
+      <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm">
+        <h2 className="font-bold text-gray-900 dark:text-white mb-1">Recent Reports / Activity Feed</h2>
         <p className="text-xs text-gray-400 mb-4">Latest submitted reports across the team</p>
         {recentActivity.length === 0 ? (
           <p className="text-center text-gray-300 py-8 text-sm">No recent activity</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {recentActivity.map(r => (
-              <div key={r._id} className="flex items-start gap-3 p-3.5 rounded-xl"
-                style={{ backgroundColor: '#F8F5FF' }}>
+              <div key={r._id} className="flex items-start gap-3 p-3.5 rounded-xl bg-violet-50 dark:bg-gray-700/60">
                 <div className="w-9 h-9 rounded-xl text-white flex items-center justify-center text-xs font-bold flex-shrink-0"
                   style={{ background: 'linear-gradient(135deg, #7c3aed, #5b21b6)' }}>
                   {r.user?.name?.charAt(0)}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-gray-900 leading-tight">
+                  <p className="text-sm font-semibold text-gray-900 dark:text-white leading-tight">
                     {r.user?.name}
                     <span className="text-gray-400 font-normal"> submitted a report</span>
                   </p>
                   <p className="text-xs text-gray-400 truncate mt-0.5">{r.tasksCompleted}</p>
                   {r.project && (
-                    <span className="inline-flex items-center mt-1.5 px-2 py-0.5 rounded-lg text-xs font-semibold bg-violet-100 text-violet-700">
+                    <span className="inline-flex items-center mt-1.5 px-2 py-0.5 rounded-lg text-xs font-semibold bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300">
                       {r.project.name}
                     </span>
                   )}
@@ -300,7 +297,7 @@ export default function Dashboard() {
 
 function EmptyChart({ icon, text }) {
   return (
-    <div className="h-48 flex flex-col items-center justify-center text-gray-200 gap-2">
+    <div className="h-48 flex flex-col items-center justify-center text-gray-200 dark:text-gray-600 gap-2">
       {icon && <span className="text-4xl opacity-30">{icon}</span>}
       <p className="text-sm">{text}</p>
     </div>

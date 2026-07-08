@@ -8,27 +8,25 @@ const seed = async () => {
   await mongoose.connect(process.env.MONGODB_URI);
   console.log('Connected to MongoDB');
 
+  let manager;
   // Clear old reports and projects
   await Report.deleteMany({});
   await Project.deleteMany({});
   console.log('Cleared old reports and projects');
 
-  // Delete old test/demo member accounts (keep managers)
-  await User.deleteMany({ role: 'member' });
-  console.log('Cleared old member accounts');
+  // Delete ALL old users and start fresh
+  await User.deleteMany({});
+  console.log('Cleared all old user accounts');
 
-  // Get manager
-  let manager = await User.findOne({ role: 'manager' });
-  if (!manager) {
-    manager = await User.create({
-      name: 'Nethmi Wasana',
-      email: 'nethmi@techwave.lk',
-      password: 'password123',
-      role: 'manager',
-      department: 'Product Management',
-    });
-    console.log('Created manager');
-  }
+  // Create proper Sri Lankan manager
+  manager = await User.create({
+    name: 'Nethmi Wasana',
+    email: 'nethmi@techwave.lk',
+    password: 'password123',
+    role: 'manager',
+    department: 'Product Management',
+  });
+  console.log('Created manager:', manager.name);
 
   // Sri Lankan IT company projects - English only
   const projectList = [

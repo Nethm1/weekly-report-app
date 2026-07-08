@@ -38,19 +38,19 @@ export default function Profile() {
   return (
     <div className="max-w-lg mx-auto space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Profile</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Profile</h1>
         <p className="text-gray-400 text-sm mt-0.5">Manage your account information</p>
       </div>
 
       {/* Profile Info */}
-      <div className="bg-white rounded-2xl shadow-sm p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
         <div className="flex items-center gap-4 mb-6 pb-5 border-b border-gray-100">
           <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-xl font-bold text-white flex-shrink-0"
             style={{ background: 'linear-gradient(135deg, #7c3aed, #5b21b6)' }}>
             {user?.name?.charAt(0).toUpperCase()}
           </div>
           <div>
-            <p className="font-bold text-gray-900">{user?.name}</p>
+            <p className="font-bold text-gray-900 dark:text-white">{user?.name}</p>
             <p className="text-sm text-gray-400">{user?.email}</p>
             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-lg text-xs font-semibold mt-1.5 ${
               user?.role === 'manager' ? 'bg-violet-100 text-violet-700' : 'bg-gray-100 text-gray-600'
@@ -85,7 +85,7 @@ export default function Profile() {
       </div>
 
       {/* Change Password */}
-      <div className="bg-white rounded-2xl shadow-sm p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
         <div className="flex items-center gap-2 mb-4">
           <Lock size={15} className="text-violet-500" />
           <h2 className="font-semibold text-gray-900 text-sm">Change Password</h2>

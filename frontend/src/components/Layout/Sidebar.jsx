@@ -1,12 +1,14 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import { useTheme } from '../../context/ThemeContext'
 import {
   LayoutDashboard, FileText, FolderOpen, Users,
-  LogOut, BarChart2, ChevronRight, UserCircle, Settings
+  LogOut, BarChart2, ChevronRight, Settings, Sun, Moon
 } from 'lucide-react'
 
 export default function Sidebar() {
   const { user, logout } = useAuth()
+  const { dark, toggleTheme } = useTheme()
   const navigate = useNavigate()
   const handleLogout = () => { logout(); navigate('/login') }
 
@@ -81,6 +83,13 @@ export default function Sidebar() {
           className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-purple-300 hover:bg-white/10 hover:text-white transition-all duration-200">
           <LogOut size={17} />
           <span>Log Out</span>
+        </button>
+
+        {/* Dark mode toggle */}
+        <button onClick={toggleTheme}
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-purple-300 hover:bg-white/10 hover:text-white transition-all duration-200">
+          {dark ? <Sun size={17} /> : <Moon size={17} />}
+          <span>{dark ? 'Light Mode' : 'Dark Mode'}</span>
         </button>
       </div>
     </aside>

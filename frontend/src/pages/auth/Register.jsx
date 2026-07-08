@@ -25,14 +25,14 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-8" style={{ backgroundColor: '#EEE9FF' }}>
+    <div className="min-h-screen flex items-center justify-center px-4 py-8 dark:bg-gray-900" style={{ backgroundColor: '#EEE9FF' }}>
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center"
             style={{ background: 'linear-gradient(135deg, #7c3aed, #5b21b6)' }}>
             <BarChart2 size={26} className="text-white" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900">Create your account</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Create your account</h2>
           <p className="text-gray-400 mt-1 text-sm">Join your team's reporting system</p>
         </div>
 

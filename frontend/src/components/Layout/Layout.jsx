@@ -8,7 +8,7 @@ export default function Layout({ children }) {
   return (
     <div className="flex min-h-screen" style={{ backgroundColor: '#EEE9FF' }}>
       <Sidebar />
-      <main className="flex-1 ml-60 p-7 overflow-y-auto min-h-screen">
+      <main className="flex-1 ml-60 p-7 overflow-y-auto min-h-screen dark:bg-[#0f0a1e]">
         {children}
       </main>
       {user?.role === 'manager' && <ChatWidget />}

@@ -62,7 +62,7 @@ export default function Projects() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Projects & Categories</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Projects & Categories</h1>
           <p className="text-gray-400 text-sm mt-1">Manage work categories used in reports</p>
         </div>
         {isManager && (
@@ -75,9 +75,9 @@ export default function Projects() {
       {/* Modal */}
       {showForm && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 px-4">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 w-full max-w-md shadow-2xl">
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-gray-900">{editProject ? 'Edit Project' : 'New Project'}</h2>
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white">{editProject ? 'Edit Project' : 'New Project'}</h2>
               <button onClick={closeForm} className="p-1.5 hover:bg-gray-100 rounded-lg">
                 <X size={16} />
               </button>
@@ -126,7 +126,7 @@ export default function Projects() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.map(p => (
-            <div key={p._id} className="card hover:shadow-md transition-all duration-200">
+            <div key={p._id} className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 dark:border-gray-700">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0"
@@ -134,7 +134,7 @@ export default function Projects() {
                     <FolderOpen size={18} style={{ color: p.color }} />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="font-semibold text-gray-900">{p.name}</h3>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">{p.name}</h3>
                     {p.description && <p className="text-sm text-gray-400 truncate mt-0.5">{p.description}</p>}
                   </div>
                 </div>

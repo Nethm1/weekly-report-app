@@ -111,8 +111,8 @@ export default function ReportForm() {
         <ArrowLeft size={16} /> Back to Reports
       </button>
 
-      <div className="card">
-        <h1 className="text-xl font-bold text-gray-900 mb-6">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
+        <h1 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
           {isEdit ? 'Edit Report' : 'New Weekly Report'}
         </h1>
 
@@ -120,11 +120,11 @@ export default function ReportForm() {
           {/* Week Range */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Week Start *</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Week Start *</label>
               <input type="date" name="weekStart" value={form.weekStart} onChange={handleChange} className="input-field" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Week End *</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Week End *</label>
               <input type="date" name="weekEnd" value={form.weekEnd} onChange={handleChange} className="input-field" />
             </div>
           </div>
