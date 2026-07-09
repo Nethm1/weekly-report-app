@@ -9,23 +9,16 @@ Express.js REST API with MongoDB
 npm install
 ```
 
-### 2. MongoDB Atlas Setup
-1. Go to https://www.mongodb.com/cloud/atlas
-2. Create a free account and cluster
-3. Click **"Connect"** → **"Connect your application"**
-4. Copy the connection string
-
-### 3. Configure Environment
-Edit `.env` file:
+### 2. Configure Environment
+Edit `.env`:
 ```env
-MONGODB_URI=your_mongodb_connection_string_here
-JWT_SECRET=any_random_secret_string
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
 ```
 
-### 4. Run Server
+### 3. Run Server
 ```bash
-npm run dev   # Development
-npm start     # Production
+npm run dev
 ```
 Server runs on **http://localhost:5000**
 
@@ -46,14 +39,14 @@ Server runs on **http://localhost:5000**
 
 ### Projects
 - `GET /api/projects` - Get all projects
-- `POST /api/projects` - Create project (manager)
-- `PUT /api/projects/:id` - Update project (manager)
-- `DELETE /api/projects/:id` - Delete project (manager)
+- `POST /api/projects` - Create (manager)
+- `PUT /api/projects/:id` - Update (manager)
+- `DELETE /api/projects/:id` - Delete (manager)
 
 ### Dashboard (Manager only)
 - `GET /api/dashboard/stats` - Summary statistics
-- `GET /api/dashboard/submission-status` - Team submission status
-- `GET /api/dashboard/trends` - Report trends (8 weeks)
+- `GET /api/dashboard/submission-status` - Team status
+- `GET /api/dashboard/trends` - 8-week trends
 - `GET /api/dashboard/recent` - Recent activity
 - `GET /api/dashboard/workload` - Project workload
 
