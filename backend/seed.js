@@ -219,9 +219,12 @@ const seed = async () => {
     ],
   ];
 
-  // Create 4 weeks of reports
+  // Create 8 weeks of reports with VARIED counts for realistic trend chart
   const now = new Date();
-  for (let week = 0; week < 4; week++) {
+  // Week counts vary: 2, 3, 4, 5, 3, 4, 5, 5 (realistic trend)
+  const weekMemberCounts = [2, 3, 4, 5, 3, 4, 5, 5];
+
+  for (let week = 0; week < 8; week++) {
     const dayOfWeek = now.getDay();
     const diffToMonday = (dayOfWeek === 0 ? -6 : 1) - dayOfWeek;
     const weekStart = new Date(now);
@@ -230,26 +233,29 @@ const seed = async () => {
     const weekEnd = new Date(weekStart);
     weekEnd.setDate(weekStart.getDate() + 6);
 
-    for (let i = 0; i < members.length; i++) {
-      const template = reportTemplates[i][week] || reportTemplates[i][0];
+    const count = weekMemberCounts[week] || members.length;
+    const membersThisWeek = members.slice(0, count);
+
+    for (let i = 0; i < membersThisWeek.length; i++) {
+      const template = reportTemplates[i % reportTemplates.length][week % 4] || reportTemplates[i % reportTemplates.length][0];
       const submitDate = new Date(weekStart);
       submitDate.setDate(weekStart.getDate() + 4);
 
       await Report.create({
-        user: members[i]._id,
+        user: membersThisWeek[i]._id,
         project: projects[i % projects.length]._id,
         weekStart,
         weekEnd,
         tasksCompleted: template.tasks,
         tasksPlanned: template.planned,
         blockers: template.blockers,
-        hoursWorked: template.hours,
+        hoursWorked: template.hours + Math.floor(Math.random() * 6) - 2,
         notes: template.notes,
         status: 'submitted',
         submittedAt: week === 0 ? new Date() : submitDate,
       });
     }
-    console.log(`Week -${week}: reports created`);
+    console.log(`Week -${week}: ${count} reports created`);
   }
 
   console.log('\n========================================');

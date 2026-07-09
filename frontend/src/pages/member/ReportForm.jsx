@@ -111,8 +111,10 @@ export default function ReportForm() {
         <ArrowLeft size={16} /> Back to Reports
       </button>
 
-      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6">
-        <h1 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
+      <div className="page-section animate-scaleIn">
+        <div className="gradient-strip-v" />
+        <div className="p-6">
+        <h1 className="text-xl font-black text-gray-900 dark:text-white mb-6">
           {isEdit ? 'Edit Report' : 'New Weekly Report'}
         </h1>
 
@@ -192,6 +194,7 @@ export default function ReportForm() {
               <Send size={15} /> {submitting ? 'Submitting...' : 'Submit Report'}
             </button>
           </div>
+        </div>
         </div>
       </div>
     </div>
