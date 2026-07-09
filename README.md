@@ -172,5 +172,4 @@ Frontend runs on **http://localhost:3000**
 ## Presentation
 [View Presentation](https://drive.google.com/file/d/1TFtUfgrtwTu-6nDdWwWKIYnMtsA7pTMo/view?usp=sharing)
 
-## Demo Video
-[Watch Demo](https://drive.google.com) ← Add link here
+
