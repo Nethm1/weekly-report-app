@@ -66,6 +66,9 @@ Server runs on **http://localhost:5000**
 ## Demo Video
 [Watch Demo](#) ← Add link after recording
 
+## Presentation
+[View Presentation](https://drive.google.com/file/d/1TFtUfgrtwTu-6nDdWwWKIYnMtsA7pTMo/view?usp=sharing)
+
 ## Tech Stack
 - **Runtime:** Node.js
 - **Framework:** Express.js 4
