@@ -167,7 +167,7 @@ Frontend runs on **http://localhost:3000**
 [View ER Diagram](https://drive.google.com/file/d/1fEjb82Nc8x4jfoEbD4JyCgDEWikw05QZ/view?usp=sharing)
 
 ## Demo Video
-[Watch Demo](#) ← Add video link here
+[Watch Demo](https://drive.google.com/file/d/1UsIK7P5JeduPSgQnphTVVIVBXkZw06LG/view?usp=sharing)
 
 ## Presentation
 [View Presentation](https://drive.google.com/file/d/1TFtUfgrtwTu-6nDdWwWKIYnMtsA7pTMo/view?usp=sharing)
