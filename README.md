@@ -164,7 +164,7 @@ Frontend runs on **http://localhost:3000**
 | POST | /api/ai/chat | Chat with team assistant |
 
 ## ER Diagram
-[View ER Diagram](https://dbdiagram.io) ← Add link here
+[View ER Diagram](https://drive.google.com/file/d/1fEjb82Nc8x4jfoEbD4JyCgDEWikw05QZ/view?usp=sharing)
 
 ## Demo Video
 [Watch Demo](https://drive.google.com) ← Add link here
